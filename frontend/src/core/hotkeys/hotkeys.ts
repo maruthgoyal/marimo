@@ -215,7 +215,7 @@ const DEFAULT_HOT_KEY = {
   "cell.cellActions": {
     name: "Open cell actions",
     group: "Editing",
-    key: "Mod-p",
+    key: "Mod-Shift-a",
   },
   "cell.splitCell": {
     name: "Split cell",
@@ -382,6 +382,11 @@ const DEFAULT_HOT_KEY = {
     name: "Focus bottom",
     group: "Navigation",
     key: "Mod-Shift-g",
+  },
+  "global.fileSearch": {
+    name: "Search files",
+    group: "Navigation",
+    key: "Mod-p",
   },
   "global.toggleSidebar": {
     name: "Toggle helper panel",

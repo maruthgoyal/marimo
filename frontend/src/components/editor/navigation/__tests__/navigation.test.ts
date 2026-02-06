@@ -1216,7 +1216,7 @@ describe("useCellNavigationProps", () => {
         useCellNavigationProps(cellId1, optionsWithDropdown),
       );
 
-      const mockEvent = Mocks.keyboardEvent({ key: "p", ctrlKey: true });
+      const mockEvent = Mocks.keyboardEvent({ key: "a", ctrlKey: true, shiftKey: true });
 
       act(() => {
         result.current.onKeyDown?.(mockEvent);
@@ -1238,7 +1238,7 @@ describe("useCellNavigationProps", () => {
         useCellNavigationProps(cellId1, optionsWithNullDropdown),
       );
 
-      const mockEvent = Mocks.keyboardEvent({ key: "p", ctrlKey: true });
+      const mockEvent = Mocks.keyboardEvent({ key: "a", ctrlKey: true, shiftKey: true });
 
       act(() => {
         result.current.onKeyDown?.(mockEvent);

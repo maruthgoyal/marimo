@@ -19,6 +19,7 @@ import {
   FastForwardIcon,
   FileIcon,
   FilePlus2Icon,
+  FileSearchIcon,
   Files,
   FileTextIcon,
   FolderDownIcon,
@@ -84,7 +85,7 @@ import { useRunAllCells } from "../cell/useRunCells";
 import { useChromeActions, useChromeState } from "../chrome/state";
 import { PANELS } from "../chrome/types";
 import { keyboardShortcutsAtom } from "../controls/keyboard-shortcuts";
-import { commandPaletteAtom } from "../controls/state";
+import { commandPaletteAtom, fileSearchAtom } from "../controls/state";
 import { AddDatabaseDialogContent } from "../database/add-database-form";
 import { displayLayoutName, getLayoutIcon } from "../renderers/layout-select";
 import { LAYOUT_TYPES } from "../renderers/types";
@@ -120,6 +121,7 @@ export function useNotebookActions() {
   const runAllCells = useRunAllCells();
   const copyNotebook = useCopyNotebook(filename);
   const setCommandPaletteOpen = useSetAtom(commandPaletteAtom);
+  const setFileSearchOpen = useSetAtom(fileSearchAtom);
   const setSettingsDialogOpen = useSetAtom(settingDialogAtom);
   const setKeyboardShortcutsOpen = useSetAtom(keyboardShortcutsAtom);
   const { exportAsMarkdown, readCode, saveCellConfig, updateCellOutputs } =
@@ -464,6 +466,12 @@ export function useNotebookActions() {
     },
     {
       divider: true,
+      icon: <FileSearchIcon size={14} strokeWidth={1.5} />,
+      label: "Search files",
+      hotkey: "global.fileSearch",
+      handle: () => setFileSearchOpen((open) => !open),
+    },
+    {
       icon: <CommandIcon size={14} strokeWidth={1.5} />,
       label: "Command palette",
       hotkey: "global.commandPalette",

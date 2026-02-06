@@ -2,3 +2,4 @@
 import { atom } from "jotai";
 
 export const commandPaletteAtom = atom(false);
+export const fileSearchAtom = atom(false);

@@ -10,6 +10,10 @@ const LazyCommandPalette = lazy(
   () => import("../editor/controls/command-palette"),
 );
 
+const LazyFileSearchDialog = lazy(
+  () => import("../editor/controls/file-search-dialog"),
+);
+
 interface Props {
   userConfig: UserConfig;
   appConfig: AppConfig;
@@ -26,6 +30,7 @@ const EditPage = (props: Props) => {
       <>
         <EditApp hideControls={true} {...props} />
         <LazyCommandPalette />
+        <LazyFileSearchDialog />
       </>
     );
   }
@@ -34,6 +39,7 @@ const EditPage = (props: Props) => {
     <AppChrome>
       <EditApp {...props} />
       <LazyCommandPalette />
+      <LazyFileSearchDialog />
     </AppChrome>
   );
 };

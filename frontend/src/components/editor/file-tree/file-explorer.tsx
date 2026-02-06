@@ -64,7 +64,7 @@ import marimoIcon from "../../../assets/icon-32x32.png";
 import { useTreeDndManager } from "./dnd-wrapper";
 import { FileViewer } from "./file-viewer";
 import type { RequestingTree } from "./requesting-tree";
-import { openStateAtom, treeAtom } from "./state";
+import { fileToOpenAtom, openStateAtom, treeAtom } from "./state";
 import {
   FILE_TYPE_ICONS,
   type FileType,
@@ -99,7 +99,15 @@ export const FileExplorer: React.FC<{
   // Keep external state to remember which folders are open
   // when this component is unmounted
   const [openState, setOpenState] = useAtom(openStateAtom);
+  const [fileToOpen, setFileToOpen] = useAtom(fileToOpenAtom);
   const { isPending, error } = useAsyncData(() => tree.initialize(setData), []);
+
+  useEffect(() => {
+    if (fileToOpen) {
+      setOpenFile(fileToOpen);
+      setFileToOpen(null);
+    }
+  }, [fileToOpen, setFileToOpen]);
 
   const handleRefresh = useEvent(() => {
     tree.refreshAll(Object.keys(openState).filter((id) => openState[id]));
